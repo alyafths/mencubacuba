@@ -22,12 +22,110 @@ We'll be working on several improvements and new features aimed at enhancing the
 
 ## Responsibilities
 
-- Theme & Performance Integrity: The system shall render retro Space Invaders-themed visual effects while maintaining optimized particle processing to minimize impact on game performance.
-- Combat & Interaction FX: The system shall provide distinct visual feedback for combat interactions, including weapon firing trails, hit impacts, explosions, and player death/Game Over sequences.
-- Progression & Environment FX: The system shall render particle effects such as sparks, smoke, and debris, along with transition animations for level completion and stage progression.
-- Synchronization & Inter-Team Integration: The system shall provide synchronized, event-driven, reusable effect components that can be triggered by other systems through game logic.
-- Player & Enemy Effects: The system shall provide visual effects for player and enemy interactions, including damage, destruction, and hit feedback.
-- Effect Lifecycle: The system shall automatically manage the creation, animation, and removal of visual effects after their completion.
+# Effecttion Team — Visual Effects Requirements
+
+## 1. Theme & Performance Integrity
+
+The VFX system shall provide retro Space Invaders-themed visual effects while maintaining optimized performance.
+
+### Requirements
+
+- The system shall maintain a consistent retro/pixel-art visual style.
+- The system shall optimize particle processing to minimize the impact on game performance.
+- The system shall reuse VFX components where possible.
+- The system shall automatically remove completed effects to prevent unnecessary resource usage.
+
+---
+
+## 2. Combat & Interaction Effects
+
+The system shall provide distinct visual feedback for combat interactions, including weapon firing, hit impacts, enemy destruction, and player death.
+
+### 2.1 Weapon Firing
+
+When the player or an enemy fires a projectile, the system shall trigger the appropriate firing effect.
+
+### Effects
+
+- Player bullets shall leave a short visual trail.
+- Enemy bullets shall have a visually distinct trail.
+- A muzzle flash shall appear when firing.
+- Small pixel particles shall be emitted from the weapon.
+
+### Events
+
+PLAYER_SHOOT
+ENEMY_SHOOT
+2.2 Hit Impact
+
+When a projectile hits a player or enemy, the system shall display an impact effect at the hit location.
+
+Effects
+A small flash shall appear at the point of impact.
+3–6 particles shall be emitted.
+A brief sprite animation shall be displayed.
+A small explosion effect shall be displayed.
+The visual effect may be synchronized with the corresponding hit sound.
+Events
+PLAYER_HIT
+ENEMY_HIT
+Dependency
+Sound Team: Hit-sound synchronization.
+2.3 Enemy Destruction
+
+When an enemy is defeated, the system shall trigger an enemy destruction effect.
+
+Sequence
+Enemy defeated
+      ↓
+    Flash
+      ↓
+    Expand
+      ↓
+Particles + debris
+      ↓
+   Fade out
+      ↓
+    Remove
+Effects
+The enemy shall briefly flash when destroyed.
+The explosion shall expand during the destruction animation.
+Pixel particles and debris shall spread outward.
+The effect shall fade out after the animation.
+The completed effect shall be automatically removed.
+The destruction effect may vary according to the enemy type or level.
+Event
+ENEMY_DESTROYED
+Dependency
+Player & Enemy Ship Variety Team: Enemy type, level, and destruction-event data.
+2.4 Player Death / Game Over
+
+When the player is destroyed, the system shall display a destruction sequence followed by the Game Over transition.
+
+Sequence
+Player hit
+     ↓
+Player flashes
+     ↓
+Ship explodes
+     ↓
+Debris spreads
+     ↓
+Screen shake
+     ↓
+"GAME OVER"
+     ↓
+Game Over transition
+Effects
+The player ship shall flash after being hit.
+An explosion animation shall be triggered.
+Debris shall spread outward from the destroyed ship.
+Screen shake shall be triggered during the destruction sequence.
+"GAME OVER" shall be displayed after the destruction effect.
+The VFX shall transition to the Game Over state.
+Events
+PLAYER_DESTROYED
+GAME_OVER
 
 ## Dependencies on Other Teams
 
