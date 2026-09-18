@@ -20,14 +20,6 @@ We'll be working on several improvements and new features aimed at enhancing the
 | NurSofia       | Performance & QA Developer | [sofiajourke](https://github.com/sofiajourke)   |
 | Elisya Natasha | Project Manager            | [deluluclover](https://github.com/deluluclover) |
 
-## Responsibilities
-
-# Effecttion Team — Visual Effects Requirements
-
-## 1. Theme & Performance Integrity
-
-The VFX system shall provide retro Space Invaders-themed visual effects while maintaining optimized performance.
-
 ### Requirements
 
 - The system shall maintain a consistent retro/pixel-art visual style.
@@ -43,89 +35,65 @@ The system shall provide distinct visual feedback for combat interactions, inclu
 
 ### 2.1 Weapon Firing
 
-When the player or an enemy fires a projectile, the system shall trigger the appropriate firing effect.
+When the player or enemy fires a projectile, the system shall trigger the appropriate firing effect.
 
-### Effects
+**Effects:**
 
 - Player bullets shall leave a short visual trail.
 - Enemy bullets shall have a visually distinct trail.
 - A muzzle flash shall appear when firing.
 - Small pixel particles shall be emitted from the weapon.
 
-### Events
+**Events:**
 
-PLAYER_SHOOT
-ENEMY_SHOOT
-2.2 Hit Impact
+- `PLAYER_SHOOT`
+- `ENEMY_SHOOT`
+
+---
+
+### 2.2 Hit Impact
 
 When a projectile hits a player or enemy, the system shall display an impact effect at the hit location.
 
-Effects
-A small flash shall appear at the point of impact.
-3–6 particles shall be emitted.
-A brief sprite animation shall be displayed.
-A small explosion effect shall be displayed.
-The visual effect may be synchronized with the corresponding hit sound.
-Events
-PLAYER_HIT
-ENEMY_HIT
-Dependency
-Sound Team: Hit-sound synchronization.
-2.3 Enemy Destruction
+**Effects:**
+
+- A small flash shall appear at the point of impact.
+- 3–6 particles shall be emitted.
+- A brief sprite animation shall be displayed.
+- A small explosion effect shall be displayed.
+- The visual effect may be synchronized with the corresponding hit sound.
+
+**Events:**
+
+- `PLAYER_HIT`
+- `ENEMY_HIT`
+
+**Dependency:**
+
+- **Sound Team:** Hit-sound synchronization.
+
+---
+
+### 2.3 Enemy Destruction
 
 When an enemy is defeated, the system shall trigger an enemy destruction effect.
 
-Sequence
-Enemy defeated
-      ↓
-    Flash
-      ↓
-    Expand
-      ↓
-Particles + debris
-      ↓
-   Fade out
-      ↓
-    Remove
-Effects
-The enemy shall briefly flash when destroyed.
-The explosion shall expand during the destruction animation.
-Pixel particles and debris shall spread outward.
-The effect shall fade out after the animation.
-The completed effect shall be automatically removed.
-The destruction effect may vary according to the enemy type or level.
-Event
-ENEMY_DESTROYED
-Dependency
-Player & Enemy Ship Variety Team: Enemy type, level, and destruction-event data.
-2.4 Player Death / Game Over
+**Sequence:**
 
-When the player is destroyed, the system shall display a destruction sequence followed by the Game Over transition.
+**Enemy defeated → Flash → Expand → Particles & debris → Fade out → Remove**
 
-Sequence
-Player hit
-     ↓
-Player flashes
-     ↓
-Ship explodes
-     ↓
-Debris spreads
-     ↓
-Screen shake
-     ↓
-"GAME OVER"
-     ↓
-Game Over transition
-Effects
-The player ship shall flash after being hit.
-An explosion animation shall be triggered.
-Debris shall spread outward from the destroyed ship.
-Screen shake shall be triggered during the destruction sequence.
-"GAME OVER" shall be displayed after the destruction effect.
-The VFX shall transition to the Game Over state.
-Events
-PLAYER_DESTROYED
-GAME_OVER
+**Effects:**
+
+- The enemy shall briefly flash when destroyed.
+- The explosion shall expand during the destruction animation.
+- Pixel particles and debris shall spread outward.
+- The effect shall fade out after the animation.
+- The completed effect shall be automatically removed.
+- The destruction effect may vary according to the enemy type or level.
+
+**Event:**
+
+- `ENEMY_DESTROYED`
 
 ## Dependencies on Other Teams
 
