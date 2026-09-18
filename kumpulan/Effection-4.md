@@ -20,6 +20,8 @@ We'll be working on several improvements and new features aimed at enhancing the
 | NurSofia       | Performance & QA Developer | [sofiajourke](https://github.com/sofiajourke)   |
 | Elisya Natasha | Project Manager            | [deluluclover](https://github.com/deluluclover) |
 
+---
+
 ## Requirements
 
 - The system shall maintain a consistent retro/pixel-art visual style.
@@ -29,9 +31,13 @@ We'll be working on several improvements and new features aimed at enhancing the
 
 ---
 
+## Aim & Goals
+
 ### 1. Combat & Interaction Effects
 
 The system shall provide distinct visual feedback for combat interactions, including weapon firing, hit impacts, enemy destruction, and player death.
+
+
 
 ### 1.1 Weapon Firing
 
@@ -59,7 +65,7 @@ Player/Enemy
 - `PLAYER_SHOOT`
 - `ENEMY_SHOOT`
 
----
+
 
 ### 1.2 Hit Impact
 
@@ -86,11 +92,7 @@ Bullet → Enemy
 - `PLAYER_HIT`
 - `ENEMY_HIT`
 
-**Dependency:**
 
-- **Sound Team:** Hit-sound synchronization.
-
----
 
 ### 1.3 Enemy Destruction
 
@@ -112,7 +114,6 @@ Fade out
 Remove
 ```
 
-
 **Effects:**
 
 - The enemy shall briefly flash when destroyed.
@@ -126,14 +127,29 @@ Remove
 
 - `ENEMY_DESTROYED`
 
+
+
 ### 1.4 Player Death / Game Over
 
 When the player is destroyed, the VFX system shall display a destruction sequence followed by the Game Over transition.
 
 **Sequence:**
 
-```text 
-Player hit → Player flashes → Ship explodes → Debris spreads outward → Screen shake → "GAME OVER" → Game Over transition
+```text
+Player hit 
+   ↓ 
+Player flashes 
+   ↓ 
+Ship explodes 
+   ↓ 
+Debris spreads outward 
+   ↓ 
+Screen shake 
+   ↓ 
+"GAME OVER" 
+   ↓ 
+Game Over transition
+
 ```
 
 **Effects:**
@@ -150,6 +166,8 @@ Player hit → Player flashes → Ship explodes → Debris spreads outward → S
 - `PLAYER_DESTROYED`
 - `GAME_OVER`
 
+
+
 ### 2. Environmental Effects
 
 Enhance the game environment and level progression through particle effects and visual transitions, including:
@@ -160,6 +178,8 @@ Enhance the game environment and level progression through particle effects and 
 - Smoke from destroyed ships.
 - Debris floating after explosions.
 - Level completion effects such as `"STAGE CLEAR"`, pixel fireworks, and screen transitions.
+
+
 
 ### 3. Synchronization & Accessibility
 
@@ -174,6 +194,9 @@ Provide reusable VFX components and libraries that can be easily accessed and us
 ```text
 `PLAYER_SHOOT`, `ENEMY_SHOOT`, `PLAYER_HIT`, `ENEMY_HIT`, `ENEMY_DESTROYED`, `PLAYER_DESTROYED`, `LEVEL_COMPLETED`, `GAME_OVER`, and `STAGE_STARTED`.
 ```
+
+---
+
 
 ## Dependencies on Other Teams
 
