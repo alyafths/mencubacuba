@@ -37,6 +37,14 @@ The system shall provide distinct visual feedback for combat interactions, inclu
 
 When the player or enemy fires a projectile, the system shall trigger the appropriate firing effect.
 
+Player/Enemy 
+  │ 
+  └── 🔫 Shoot 
+       ↓ 
+   Projectile 
+       ↓ 
+  Small trail effect 
+
 **Effects:**
 
 - Player bullets shall leave a short visual trail.
@@ -54,6 +62,12 @@ When the player or enemy fires a projectile, the system shall trigger the approp
 ### 2.2 Hit Impact
 
 When a projectile hits a player or enemy, the system shall display an impact effect at the hit location.
+
+Bullet → Enemy
+           ↓
+       Hit detected
+           ↓
+      Impact VFX
 
 **Effects:**
 
@@ -80,7 +94,18 @@ When an enemy is defeated, the system shall trigger an enemy destruction effect.
 
 **Sequence:**
 
-**Enemy defeated → Flash → Expand → Particles & debris → Fade out → Remove**
+Enemy 
+  ↓ 
+Flash 
+  ↓ 
+Expand 
+  ↓ 
+Particles + debris 
+  ↓ 
+Fade out 
+  ↓ 
+Remove
+
 
 **Effects:**
 
@@ -94,6 +119,49 @@ When an enemy is defeated, the system shall trigger an enemy destruction effect.
 **Event:**
 
 - `ENEMY_DESTROYED`
+
+### 2.4 Player Death / Game Over
+
+When the player is destroyed, the VFX system shall display a destruction sequence followed by the Game Over transition.
+
+**Sequence:**
+
+**Player hit → Player flashes → Ship explodes → Debris spreads outward → Screen shake → "GAME OVER" → Game Over transition**
+
+**Effects:**
+
+- The player ship shall flash after being hit.
+- An explosion animation shall be triggered.
+- Debris shall spread outward from the destroyed ship.
+- Screen shake shall be triggered during the destruction sequence.
+- `"GAME OVER"` shall be displayed after the destruction effect.
+- The VFX shall transition to the Game Over state.
+
+**Events:**
+
+- `PLAYER_DESTROYED`
+- `GAME_OVER`
+
+### 2. Environmental Effects
+
+Enhance the game environment and level progression through particle effects and visual transitions, including:
+
+- Floating stars.
+- Tiny space particles.
+- Sparks from damaged objects.
+- Smoke from destroyed ships.
+- Debris floating after explosions.
+- Level completion effects such as `"STAGE CLEAR"`, pixel fireworks, and screen transitions.
+
+### 3. Synchronization & Accessibility
+
+Provide reusable VFX components and libraries that can be easily accessed and used by other teams, including:
+
+- Reusable VFX components.
+- Consistent VFX events.
+- Synchronization with game events.
+- Easy integration with other game systems.
+- Events such as `PLAYER_SHOOT`, `ENEMY_SHOOT`, `PLAYER_HIT`, `ENEMY_HIT`, `ENEMY_DESTROYED`, `PLAYER_DESTROYED`, `LEVEL_COMPLETED`, `GAME_OVER`, and `STAGE_STARTED`.
 
 ## Dependencies on Other Teams
 
