@@ -28,3 +28,17 @@ We'll be working on several improvements and new features aimed at enhancing the
 - Synchronization & Inter-Team Integration: The system shall provide synchronized, event-driven, reusable effect components that can be triggered by other systems through game logic.
 - Player & Enemy Effects: The system shall provide visual effects for player and enemy interactions, including damage, destruction, and hit feedback.
 - Effect Lifecycle: The system shall automatically manage the creation, animation, and removal of visual effects after their completion.
+
+## Dependencies on Other Teams
+
+1. Player & Enemy Ship Variety Team
+
+Our Visual Effect System needs access to the player and enemy entities, including their position, sprite/ship type, hitbox, and destruction state. This allows us to correctly attach effects such as enemy hit flashes, explosions, and player-destruction effects to the corresponding ship. The enemy/ship information is also needed so that effects can be positioned correctly and remain consistent with different player and enemy variants.
+
+2. Level Design System Team
+
+Our Visual Effect System needs reliable wave/level start, wave completion, and level-transition events. These events allow us to trigger effects such as wave-clear animations, level-transition effects, and new-wave introduction effects at the correct point in the gameplay sequence. Without these events, the visual effects may be triggered at the wrong time or become disconnected from the actual game progression.
+
+3. Sound Effects/BGM Team
+
+Our Visual Effect System needs to coordinate with the Sound Effects/BGM Team for shared gameplay events such as player shooting, enemy hits, enemy destruction, and player damage/death. Visual and audio effects should be triggered from the same gameplay event and use consistent timing so that, for example, an enemy explosion and its explosion sound occur together. This coordination will help maintain consistent and responsive gameplay feedback
