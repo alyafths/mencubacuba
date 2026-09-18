@@ -37,13 +37,15 @@ The system shall provide distinct visual feedback for combat interactions, inclu
 
 When the player or enemy fires a projectile, the system shall trigger the appropriate firing effect.
 
+ ```text
 Player/Enemy 
   │ 
   └── 🔫 Shoot 
        ↓ 
    Projectile 
        ↓ 
-  Small trail effect 
+  Small trail effect
+```
 
 **Effects:**
 
@@ -63,11 +65,13 @@ Player/Enemy
 
 When a projectile hits a player or enemy, the system shall display an impact effect at the hit location.
 
+ ```text
 Bullet → Enemy
            ↓
        Hit detected
            ↓
       Impact VFX
+```
 
 **Effects:**
 
@@ -94,6 +98,7 @@ When an enemy is defeated, the system shall trigger an enemy destruction effect.
 
 **Sequence:**
 
+```text
 Enemy 
   ↓ 
 Flash 
@@ -105,6 +110,7 @@ Particles + debris
 Fade out 
   ↓ 
 Remove
+```
 
 
 **Effects:**
@@ -126,7 +132,9 @@ When the player is destroyed, the VFX system shall display a destruction sequenc
 
 **Sequence:**
 
+```text 
 **Player hit → Player flashes → Ship explodes → Debris spreads outward → Screen shake → "GAME OVER" → Game Over transition**
+```
 
 **Effects:**
 
