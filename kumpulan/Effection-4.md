@@ -1,4 +1,4 @@
-# Instructors
+# Effection
 
 ## Team Introduction
 
