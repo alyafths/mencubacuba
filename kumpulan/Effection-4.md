@@ -20,7 +20,7 @@ We'll be working on several improvements and new features aimed at enhancing the
 | NurSofia       | Performance & QA Developer | [sofiajourke](https://github.com/sofiajourke)   |
 | Elisya Natasha | Project Manager            | [deluluclover](https://github.com/deluluclover) |
 
-### Requirements
+## Requirements
 
 - The system shall maintain a consistent retro/pixel-art visual style.
 - The system shall optimize particle processing to minimize the impact on game performance.
@@ -29,11 +29,11 @@ We'll be working on several improvements and new features aimed at enhancing the
 
 ---
 
-## 2. Combat & Interaction Effects
+### 1. Combat & Interaction Effects
 
 The system shall provide distinct visual feedback for combat interactions, including weapon firing, hit impacts, enemy destruction, and player death.
 
-### 2.1 Weapon Firing
+### 1.1 Weapon Firing
 
 When the player or enemy fires a projectile, the system shall trigger the appropriate firing effect.
 
@@ -61,7 +61,7 @@ Player/Enemy
 
 ---
 
-### 2.2 Hit Impact
+### 1.2 Hit Impact
 
 When a projectile hits a player or enemy, the system shall display an impact effect at the hit location.
 
@@ -92,7 +92,7 @@ Bullet → Enemy
 
 ---
 
-### 2.3 Enemy Destruction
+### 1.3 Enemy Destruction
 
 When an enemy is defeated, the system shall trigger an enemy destruction effect.
 
@@ -126,14 +126,14 @@ Remove
 
 - `ENEMY_DESTROYED`
 
-### 2.4 Player Death / Game Over
+### 1.4 Player Death / Game Over
 
 When the player is destroyed, the VFX system shall display a destruction sequence followed by the Game Over transition.
 
 **Sequence:**
 
 ```text 
-**Player hit → Player flashes → Ship explodes → Debris spreads outward → Screen shake → "GAME OVER" → Game Over transition**
+Player hit → Player flashes → Ship explodes → Debris spreads outward → Screen shake → "GAME OVER" → Game Over transition
 ```
 
 **Effects:**
@@ -169,18 +169,22 @@ Provide reusable VFX components and libraries that can be easily accessed and us
 - Consistent VFX events.
 - Synchronization with game events.
 - Easy integration with other game systems.
-- Events such as `PLAYER_SHOOT`, `ENEMY_SHOOT`, `PLAYER_HIT`, `ENEMY_HIT`, `ENEMY_DESTROYED`, `PLAYER_DESTROYED`, `LEVEL_COMPLETED`, `GAME_OVER`, and `STAGE_STARTED`.
+- Events such as
+
+```text
+`PLAYER_SHOOT`, `ENEMY_SHOOT`, `PLAYER_HIT`, `ENEMY_HIT`, `ENEMY_DESTROYED`, `PLAYER_DESTROYED`, `LEVEL_COMPLETED`, `GAME_OVER`, and `STAGE_STARTED`.
+```
 
 ## Dependencies on Other Teams
 
-1. Player & Enemy Ship Variety Team
+### 1. Player & Enemy Ship Variety Team
 
 Our Visual Effect System needs access to the player and enemy entities, including their position, sprite/ship type, hitbox, and destruction state. This allows us to correctly attach effects such as enemy hit flashes, explosions, and player-destruction effects to the corresponding ship. The enemy/ship information is also needed so that effects can be positioned correctly and remain consistent with different player and enemy variants.
 
-2. Level Design System Team
+### 2. Level Design System Team
 
 Our Visual Effect System needs reliable wave/level start, wave completion, and level-transition events. These events allow us to trigger effects such as wave-clear animations, level-transition effects, and new-wave introduction effects at the correct point in the gameplay sequence. Without these events, the visual effects may be triggered at the wrong time or become disconnected from the actual game progression.
 
-3. Sound Effects/BGM Team
+### 3. Sound Effects/BGM Team
 
 Our Visual Effect System needs to coordinate with the Sound Effects/BGM Team for shared gameplay events such as player shooting, enemy hits, enemy destruction, and player damage/death. Visual and audio effects should be triggered from the same gameplay event and use consistent timing so that, for example, an enemy explosion and its explosion sound occur together. This coordination will help maintain consistent and responsive gameplay feedback
